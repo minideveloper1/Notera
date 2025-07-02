@@ -1,0 +1,23 @@
+# Node.js bağımlılıkları
+node_modules/
+
+# Electron derleme çıktısı
+Notera-win32-x64/
+*.exe
+*.app
+*.dmg
+
+# IDE/editor ayar dosyaları
+.vscode/
+*.log
+
+# Sistem dosyaları
+.DS_Store
+Thumbs.db
+
+# Geçici veriler
+*.tmp
+*.bak
+
+# Kişisel ayarlar (opsiyonel)
+.env

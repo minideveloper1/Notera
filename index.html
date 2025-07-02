@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Notera - Modern Not Alma</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- Ana Container -->
+    <div class="app-container">
+        
+        <!-- Sol Panel - Not Listesi -->
+        <div class="sidebar">
+            <!-- Başlık ve Tema Değiştirici -->
+            <div class="sidebar-header">
+                <div class="app-title">
+                    <i class="fas fa-sticky-note"></i>
+                    <h1>Notera</h1>
+                </div>
+                <button class="theme-toggle" id="themeToggle" title="Tema Değiştir">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+
+            <!-- Arama Kutusu -->
+            <div class="search-container">
+                <div class="search-box">
+                    <i class="fas fa-search"></i>
+                    <input type="text" id="searchInput" placeholder="Notlarda ara...">
+                    <button class="clear-search" id="clearSearch" style="display: none;">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Not Listesi -->
+            <div class="notes-container">
+                <div class="notes-header">
+                    <h3>Notlarım</h3>
+                    <span class="notes-count" id="notesCount">0</span>
+                </div>
+                
+                <div class="notes-list" id="notesList">
+                    <!-- Notlar buraya dinamik olarak eklenecek -->
+                    <div class="no-notes" id="noNotes">
+                        <i class="fas fa-sticky-note"></i>
+                        <p>Henüz not yok</p>
+                        <small>Yeni bir not oluşturmak için + butonuna tıklayın</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sağ Panel - Not Editörü -->
+        <div class="main-content">
+            <!-- Not Editör Container -->
+            <div class="note-editor-container" id="noteEditorContainer">
+                
+                <!-- Varsayılan Hoş Geldin Ekranı -->
+                <div class="welcome-screen" id="welcomeScreen">
+                    <div class="welcome-content">
+                        <i class="fas fa-sticky-note welcome-icon"></i>
+                        <h2>Notera'ya Hoş Geldiniz</h2>
+                        <p>Modern ve sade not alma deneyimi</p>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-plus"></i> Sınırsız not oluşturun</li>
+                            <li><i class="fas fa-search"></i> Hızlı arama yapın</li>
+                            <li><i class="fas fa-palette"></i> Karanlık/Aydınlık tema</li>
+                            <li><i class="fas fa-save"></i> Otomatik kaydetme</li>
+                        </ul>
+                        <button class="welcome-btn" onclick="createNewNote()">
+                            <i class="fas fa-plus"></i>
+                            İlk Notunuzu Oluşturun
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Not Editörü -->
+                <div class="note-editor" id="noteEditor" style="display: none;">
+                    
+                    <!-- Not Başlık Alanı -->
+                    <div class="note-header">
+                        <input 
+                            type="text" 
+                            class="note-title" 
+                            id="noteTitle" 
+                            placeholder="Not başlığı..."
+                            maxlength="100"
+                        >
+                        <div class="note-actions">
+                            <button class="action-btn save-btn" id="saveBtn" title="Kaydet (Ctrl+S)">
+                                <i class="fas fa-save"></i>
+                            </button>
+                            <button class="action-btn delete-btn" id="deleteBtn" title="Sil">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Not İçerik Alanı -->
+                    <div class="note-content">
+                        <textarea 
+                            class="note-textarea" 
+                            id="noteContent" 
+                            placeholder="Notunuzu buraya yazın..."
+                            spellcheck="true"
+                        ></textarea>
+                    </div>
+
+                    <!-- Not Meta Bilgileri -->
+                    <div class="note-meta">
+                        <div class="note-info">
+                            <span class="note-date">
+                                <i class="fas fa-calendar-plus"></i>
+                                Oluşturuldu: <span id="createdDate">-</span>
+                            </span>
+                            <span class="note-date">
+                                <i class="fas fa-edit"></i>
+                                Son düzenleme: <span id="modifiedDate">-</span>
+                            </span>
+                        </div>
+                        <div class="note-stats">
+                            <span class="char-count">
+                                <i class="fas fa-font"></i>
+                                <span id="charCount">0</span> karakter
+                            </span>
+                            <span class="word-count">
+                                <i class="fas fa-file-word"></i>
+                                <span id="wordCount">0</span> kelime
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Yeni Not Butonu -->
+            <button class="new-note-btn" id="newNoteBtn" title="Yeni Not (Ctrl+N)">
+                <i class="fas fa-plus"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Bildirim Container -->
+    <div class="notification-container" id="notificationContainer"></div>
+
+    <!-- Silme Onay Modal -->
+    <div class="modal-overlay" id="deleteModal" style="display: none;">
+        <div class="modal">
+            <div class="modal-header">
+                <h3><i class="fas fa-exclamation-triangle"></i> Not Silme</h3>
+            </div>
+            <div class="modal-body">
+                <p>Bu notu silmek istediğinizden emin misiniz?</p>
+                <p class="modal-warning">Bu işlem geri alınamaz.</p>
+            </div>
+            <div class="modal-actions">
+                <button class="modal-btn cancel-btn" id="cancelDelete">İptal</button>
+                <button class="modal-btn confirm-btn" id="confirmDelete">
+                    <i class="fas fa-trash"></i>
+                    Sil
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Yükleme Göstergesi -->
+    <div class="loading-overlay" id="loadingOverlay" style="display: none;">
+        <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+            <p>Yükleniyor...</p>
+        </div>
+    </div>
+
+    <!-- JavaScript Dosyası -->`
+    <script src="app.js"></script>
+</body>
+</html>
