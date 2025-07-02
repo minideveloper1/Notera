@@ -1,5 +1,17 @@
 # 📝 Notera - Modern Not Alma Uygulaması
 
+![npm](https://img.shields.io/badge/npm-%23000000.svg?style=for-the-badge&logo=npm&logoColor=white)
+![Electron](https://img.shields.io/badge/Electron-%2300BFFF.svg?style=for-the-badge&logo=electron&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-%23F7DF1E.svg?style=for-the-badge&logo=javascript&logoColor=black)
+![HTML5](https://img.shields.io/badge/HTML5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+
+## Proje Hakkında
+Bu proje Electron ile geliştirilmiş basit bir not uygulamasıdır. npm paket yöneticisi kullanılarak kurulmuştur.
+
+...
+
+
 Notera, sade ve modern bir masaüstü not alma uygulamasıdır. Electron kullanılarak geliştirilmiştir. Kullanıcı dostu arayüzü ve güçlü özellikleriyle hızlı ve etkili bir not deneyimi sunar.
 
 ---
