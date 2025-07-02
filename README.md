@@ -17,13 +17,7 @@ Notera, sade ve modern bir masaüstü not alma uygulamasıdır. Electron kullan�
 - 🔔 **Dinamik bildirim sistemi**
 - 🗑️ **Silme onay modali**
 
----
 
-## 🖥️ Ekran Görüntüsü
-
-> (Ekran görüntüsü eklersen buraya koyabilirsin)
-
----
 
 ## 📁 Proje Yapısı
 
