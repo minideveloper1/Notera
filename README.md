@@ -96,3 +96,10 @@ Kodlar modüler ve açıklamalıdır.
 app.js dosyasında tüm işlevler DOMContentLoaded ile başlatılır.
 
 Bu proje MIT lisansı ile lisanslanmıştır. Detaylar için LICENSE dosyasına göz atabilirsiniz.
+
+
+ÖNEMLİ NOT
+```
+Projede hâlâ hatalar vardır.
+Proje hâlâ geliştirme aşamasında olduğundan dolayı hatalar normaldir.
+```
